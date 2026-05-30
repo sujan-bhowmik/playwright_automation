@@ -50,3 +50,14 @@ npx playwright codegen https://example.com --output tests/texts.spec.js
 
 npx playwright codegen --device="Pixel 5" --output tests/mobile.spec.js https://playwright.dev
 
+# Generate HTML report
+npx allure generate allure-results --clean
+
+# Open the report in browser
+npx allure open
+
+
+npx allure generate allure-results --clean && npx allure open
+
+npx playwright test tests/SelectorsPractice.spec.js --project=chromium --headed --slowMo=800
+
