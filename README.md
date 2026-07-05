@@ -61,3 +61,72 @@ npx allure generate allure-results --clean && npx allure open
 
 npx playwright test tests/SelectorsPractice.spec.js --project=chromium --headed --slowMo=800
 
+
+playwright-api/
+├── tests/
+│   └── api/
+│       ├── users.spec.js          # one spec per resource/endpoint group
+│       ├── auth.spec.js
+│       └── orders.spec.js
+├── api/                           # service/client layer (like POM for APIs)
+│   ├── base-api.js                # shared request logic, headers, error handling
+│   ├── users-api.js               # wraps user endpoints: createUser(), getUser()...
+│   └── auth-api.js
+├── test-data/
+│   ├── users.json                 # static payloads
+│   └── payload-builders.js        # dynamic payload factories
+├── utils/
+│   ├── token-helper.js            # auth token generation/caching
+│   └── schema-validator.js        # response schema validation
+├── fixtures/
+│   └── api-fixtures.js            # custom fixtures (authenticated request context)
+├── config/
+│   ├── dev.env
+│   └── qa.env
+├── playwright.config.js           # baseURL per environment, projects
+├── .env                           # secrets (gitignored)
+├── .gitignore
+└── package.json
+
+
+
+playwright-framework/
+├── tests/
+│   ├── web/                          # desktop web UI tests
+│   │   ├── login.spec.js
+│   │   └── checkout.spec.js
+│   ├── mobile/                       # mobile-web tests (emulated devices)
+│   │   ├── login.mobile.spec.js
+│   │   └── nav.mobile.spec.js
+│   └── api/
+│       ├── users.spec.js
+│       └── auth.spec.js
+│
+├── pages/                            # Page Object Model (shared by web + mobile)
+│   ├── base-page.js
+│   ├── login-page.js
+│   └── checkout-page.js
+│
+├── api/                              # service layer for API tests
+│   ├── base-api.js
+│   ├── users-api.js
+│   └── auth-api.js
+│
+├── fixtures/
+│   ├── ui-fixtures.js                # injects page objects into tests
+│   └── api-fixtures.js               # authenticated request context
+│
+├── test-data/
+│   ├── users.json
+│   └── payload-builders.js
+│
+├── utils/
+│   ├── token-helper.js
+│   └── schema-validator.js
+│
+├── config/                           # per-env settings if needed
+├── playwright.config.js
+├── .env
+├── .gitignore
+└── package.json
+
