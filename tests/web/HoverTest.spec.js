@@ -1,43 +1,33 @@
 const { test } = require('@playwright/test');
 
-async function dismissCookie(page) {
+test('menu hover', async ({ page }) => {
+  await page.goto('https://www.orangehrm.com/');
+
   const allowAll = page.locator('//button[normalize-space()="Allow all"]');
   if (await allowAll.isVisible({ timeout: 5000 }).catch(() => false)) {
     await allowAll.click();
   }
-}
-
-test('menu hover', async ({ page }) => {
-  const baseUrl = 'https://www.orangehrm.com/';
-  await page.goto(baseUrl);
-  await dismissCookie(page);
 
   const solutionsMenu = page.locator('//nav//a[normalize-space()="Solutions"]');
   await solutionsMenu.hover();
   const recruitmentMenu = page.locator('//a[contains(@href, "talent-management/recruitment")]').first();
-  await Promise.all([
-    page.waitForNavigation({ waitUntil: 'load' }),
-    recruitmentMenu.click(),
-  ]);
-  await dismissCookie(page);
-  await page.goto(baseUrl);
+  await recruitmentMenu.hover();
+  await recruitmentMenu.click();
+  await page.waitForTimeout(3000);
+  await page.goBack();
 
   const whyMenu = page.locator('//nav//a[normalize-space()="Why OrangeHRM"]');
   await whyMenu.hover();
   const healthcareMenu = page.locator('//a[contains(@href, "hr-software-for-healthcare")]').first();
-  await Promise.all([
-    page.waitForNavigation({ waitUntil: 'load' }),
-    healthcareMenu.click(),
-  ]);
-  await dismissCookie(page);
-  await page.goto(baseUrl);
+  await healthcareMenu.hover();
+  await healthcareMenu.click();
+  await page.waitForTimeout(3000);
+  await page.goBack();
 
   const resourcesMenu = page.locator('//nav//a[normalize-space()="Resources"]');
   await resourcesMenu.hover();
   const blogMenu = page.locator('//a[contains(@href, "resources/blog")]').first();
-  await Promise.all([
-    page.waitForNavigation({ waitUntil: 'load' }),
-    blogMenu.click(),
-  ]);
-  await dismissCookie(page);
+  await blogMenu.hover();
+  await blogMenu.click();
+  await page.waitForTimeout(3000);
 });
