@@ -6,7 +6,9 @@ test('login Page Screenshot', async () => {
 
   const context = await browser.newContext();
   const page = await context.newPage();
-  await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login', { waitUntil: 'domcontentloaded' });
-  await page.screenshot({ path: `orange_${Date.now()}.png` });
-  await browser.close();
+await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+await page.locator('//input[@placeholder="Username"]').waitFor();
+await page.screenshot({ path: `screenshot/orange_${Date.now()}.png` });
+await page.close();
+await browser.close();
 }); 
