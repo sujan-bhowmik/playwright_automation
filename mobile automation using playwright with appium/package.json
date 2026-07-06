@@ -1,0 +1,17 @@
+{
+  "name": "playwright-appium-mobile",
+  "version": "1.0.0",
+  "description": "Mobile app automation: Playwright test runner + Appium (via webdriverio)",
+  "scripts": {
+    "test:mobile": "playwright test --project=mobile",
+    "test:mobile:android": "cross-env PLATFORM=android playwright test --project=mobile",
+    "test:mobile:ios": "cross-env PLATFORM=ios playwright test --project=mobile",
+    "test:mobile:headed-report": "playwright test --project=mobile && playwright show-report",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "webdriverio": "^9.0.0",
+    "cross-env": "^7.0.3"
+  }
+}

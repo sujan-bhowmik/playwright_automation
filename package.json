@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "description": "playwright Web and API Automation",
   "main": "index.js",
-  "scripts": {
-    "test": "npx playwright test --config=config/playwright.config.js",
-    "test:headed": "npx playwright test --config=config/playwright.config.js --headed"
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sujan-bhowmik/playwright_automation.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/sujan-bhowmik/playwright_automation/issues"
+  },
+  "homepage": "https://github.com/sujan-bhowmik/playwright_automation#readme",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
     "@types/node": "^25.9.1",

@@ -8,7 +8,7 @@ test('login Page Screenshot', async () => {
   const page = await context.newPage();
 await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
 await page.locator('//input[@placeholder="Username"]').waitFor();
-await page.screenshot({ path: `screenshot/orange_${Date.now()}.png` });
+await page.screenshot({ path: `output/orange_${Date.now()}.png` });
 await page.close();
 await browser.close();
 }); 
